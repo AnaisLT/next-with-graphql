@@ -21,7 +21,7 @@ const Todos = (props) => {
   )
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const { data } = await client.query({
     query: gql`
     query TodosQuery {
