@@ -4,20 +4,20 @@ import client from '../apollo-client';
 
 const Todos = (props) => {
   return (
-    <div>
+    <ul>
       {props.todos.map((todo) => (
         <div key={todo.id} className={styles.card}>
           <h3>
-            <a href="#todo-title" aria-hidden="true" id="todo-title">
-            </a>
+            <a href={`todos/${todo.id}`} aria-hidden="true" id="todo-id">
             {todo.title}
+            </a>
           </h3>
           <p>
             {todo.completed.toString()}
           </p>
         </div>
       ))}
-    </div>
+    </ul>
   )
 }
 

@@ -1,7 +1,6 @@
 import { useQuery, gql } from '@apollo/client';
-import styles from '../styles/Home.module.css';
 
-const TodosQuery = gql`
+export const TodosQuery = gql`
   query TodosQuery {
       todos(
         options:
@@ -45,7 +44,7 @@ const Todos = () => {
       {todos.map((todo) => (
         <div key={todo.id} className={styles.card}>
           <h3>
-            <a href="#todo-title" aria-hidden="true" id="todo-title"></a>
+            <a href={`todos/${todo.id}`} aria-hidden="true" id="todo-id">{todo.title}</a>
             {todo.title}
           </h3>
           <p>
