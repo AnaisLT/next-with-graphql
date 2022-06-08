@@ -28,7 +28,7 @@ const Todos = () => {
   if (loading) {
     return (
       <h2>
-        <a href="#loading" aria-hidden="true" class="aal_anchor" id="loading"></a>
+        <a href="#loading" id="loading"></a>
         Loading...
       </h2>
     );
