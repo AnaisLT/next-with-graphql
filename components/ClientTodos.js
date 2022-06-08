@@ -1,9 +1,46 @@
-import { gql } from "@apollo/client";
-import client from "../apollo-client";
+import { useQuery, gql } from "@apollo/client";
 import { List, Paper } from "@mui/material";
 import TodoItem from "../components/TodoItem";
 
-const Todos = ({ todos }) => {
+export const TodosQuery = gql`
+  query TodosQuery {
+      todos(
+        options:
+        {
+          paginate: {
+            limit: 5,
+            page: 1
+          }
+        }
+        ) {
+        data {
+          id
+          title
+          completed
+        }
+      }
+    }
+  `;
+
+const Todos = () => {
+  const { data, loading, error } = useQuery(TodosQuery);
+
+  if (loading) {
+    return (
+      <h2>
+        <a href="#loading" aria-hidden="true" class="aal_anchor" id="loading"></a>
+        Loading...
+      </h2>
+    );
+  }
+
+  if (error) {
+    console.error(error);
+    return null;
+  }
+
+  const todos = data.todos.data;
+
   return (
     <>
       {todos.length > 0 && (
@@ -28,36 +65,6 @@ const Todos = ({ todos }) => {
       )}
     </>
   )
-}
-
-export const getStaticProps = async () => {
-  const { data } = await client.query({
-    query: gql`
-    query TodosQuery {
-        todos(
-          options:
-          {
-            paginate: {
-              limit: 5,
-              page: 1
-            }
-          }
-          ) {
-          data {
-            id
-            title
-            completed
-          }
-        }
-      }
-    `,
-  });
-
-  return {
-    props: {
-      todos: data.todos.data,
-    },
-  };
-}
+};
 
 export default Todos;

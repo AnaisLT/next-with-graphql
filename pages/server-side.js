@@ -1,23 +1,32 @@
-import styles from '../styles/Home.module.css'
-import { gql } from '@apollo/client';
-import client from '../apollo-client';
+import { gql } from "@apollo/client";
+import client from "../apollo-client";
+import TodoItem from "../components/TodoItem"
+import { List, Paper } from "@mui/material";
 
-const Todos = (props) => {
+const Todos = ({ todos }) => {
   return (
-    <ul>
-      {props.todos.map((todo) => (
-        <div key={todo.id} className={styles.card}>
-          <h3>
-            <a href={`todos/${todoId}`}aria-hidden="true" id="todo-id">
-            {todo.title}
-            </a>
-          </h3>
-          <p>
-            {todo.completed.toString()}
-          </p>
-        </div>
-      ))}
-    </ul>
+    <>
+      {todos.length > 0 && (
+        <Paper style={{ margin: 16 }}>
+          <List style={{ overflow: "scroll" }}>
+            {todos.map((todo, idx) => (
+              <TodoItem
+                {...todo}
+                key={todo.id}
+                title={
+                  <a href={`todos/${todo.id}`}aria-hidden="true" id="todo-id">
+                    {todo.title}
+                  </a>
+                }
+                completed={todo.completed}
+                divider={idx !== todos.length - 1}
+                checked={todo.completed}
+              />
+            ))}
+          </List>
+        </Paper>
+      )}
+    </>
   )
 }
 

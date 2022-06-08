@@ -1,13 +1,17 @@
 import React from "react"
 import { gql } from "@apollo/client";
-import client from '../../apollo-client';
+import client from "../../apollo-client";
+import { Paper } from "@mui/material";
 
 const SingleTodo = (props) => {
   return (
-    <div key={props.todo.id}>
-      <h1>{props.todo.title}</h1>
-      <p>{props.todo.completed.toString()}</p>
-    </div>
+    <Paper
+      style={{padding: "1rem", margin: "1rem" }}
+      elevation={2}
+      key={props.todo.id}
+    >
+      <h3>{props.todo.title}</h3>
+    </Paper>
   )
 }
 
@@ -64,8 +68,6 @@ export const getStaticPaths = async () => {
       }
     }
   });
-
-  console.log("PATHS", paths)
 
   return {
     paths,
