@@ -1,4 +1,4 @@
-import ClientTodos from "../components/ClientTodos";
+import ClientTodos from '../components/ClientTodos'
 
 const ClientSide = () => {
   return (

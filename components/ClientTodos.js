@@ -1,6 +1,7 @@
-import { useQuery, gql } from "@apollo/client";
-import { List, Paper } from "@mui/material";
-import TodoItem from "../components/TodoItem";
+import { useQuery, gql } from '@apollo/client'
+import { List, Paper } from '@mui/material'
+import Link from 'next/link'
+import TodoItem from '../components/TodoItem'
 
 export const TodosQuery = gql`
   query TodosQuery {
@@ -51,9 +52,9 @@ const Todos = () => {
                 {...todo}
                 key={todo.id}
                 title={
-                  <a href={`todos/${todo.id}`} aria-hidden="true" id="todo-id">
+                  <Link href={`todos/${todo.id}`} aria-hidden="true" id="todo-id">
                     {todo.title}
-                  </a>
+                  </Link>
                 }
                 completed={todo.completed}
                 divider={idx !== todos.length - 1}

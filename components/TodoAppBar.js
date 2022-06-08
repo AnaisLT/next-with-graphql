@@ -1,5 +1,10 @@
-import React from "react";
-import { AppBar, Toolbar, Typography, Paper } from "@mui/material";
+import React from 'react'
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Paper
+} from '@mui/material'
 
 const TodoAppBar = ({ children }) => (
   <Paper

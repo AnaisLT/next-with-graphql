@@ -1,7 +1,7 @@
-import React from "react"
-import { gql } from "@apollo/client";
-import client from "../../apollo-client";
-import { Paper } from "@mui/material";
+import React from 'react'
+import { gql } from '@apollo/client'
+import client from '../../apollo-client'
+import { Paper } from '@mui/material'
 
 const SingleTodo = (props) => {
   return (

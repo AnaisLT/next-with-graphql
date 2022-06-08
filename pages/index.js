@@ -1,7 +1,8 @@
-import { gql } from "@apollo/client";
-import client from "../apollo-client";
-import { List, Paper } from "@mui/material";
-import TodoItem from "../components/TodoItem";
+import { gql } from '@apollo/client'
+import client from '../apollo-client'
+import Link from 'next/link'
+import { List, Paper } from '@mui/material'
+import TodoItem from '../components/TodoItem'
 
 const Todos = ({ todos }) => {
   return (
@@ -14,9 +15,9 @@ const Todos = ({ todos }) => {
                 {...todo}
                 key={todo.id}
                 title={
-                  <a href={`todos/${todo.id}`} aria-hidden="true" id="todo-id">
+                  <Link href={`todos/${todo.id}`} aria-hidden="true" id="todo-id">
                     {todo.title}
-                  </a>
+                  </Link>
                 }
                 completed={todo.completed}
                 divider={idx !== todos.length - 1}
